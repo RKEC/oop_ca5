@@ -1,32 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 5.0.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Mar 22, 2021 at 02:57 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `oop_ca5`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `course`
---
+DROP DATABASE IF EXISTS oop_ca5_richard_collins;
+CREATE DATABASE oop_ca5_richard_collins;
+USE oop_ca5_richard_collins;
+Drop TABLE IF EXISTS course, student, student_courses;
 
 CREATE TABLE `course` (
   `courseid` varchar(10) NOT NULL,
@@ -35,11 +10,6 @@ CREATE TABLE `course` (
   `institution` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
 
 CREATE TABLE `student` (
   `caoNumber` int(8) NOT NULL,
@@ -47,11 +17,6 @@ CREATE TABLE `student` (
   `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `student_courses`
---
 
 CREATE TABLE `student_courses` (
   `caoNumber` int(8) NOT NULL,
@@ -59,23 +24,24 @@ CREATE TABLE `student_courses` (
   `order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `course`
---
 ALTER TABLE `course`
   ADD PRIMARY KEY (`courseid`);
 
---
--- Indexes for table `student`
---
+
 ALTER TABLE `student`
   ADD PRIMARY KEY (`caoNumber`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT into student values
+(12345678, "2001-07-12", "password123"),
+(87654321, "2000-08-22", "superduper222"),
+(43215678, "1999-01-01", "yomamayo3"),
+(56784321, "2001-06-30", "hjsdajdb123");
+
+INSERT INTO course VALUES
+("DK700", 7, "Computer Science", "DkIT"),
+("NUIM321", 8, "Primary School Teaching", "NUIM"),
+("NUIG621", 8, "Maths", "NUIG"),
+("DK821", 8, "Computer Science", "DkIT"),
+("DCU542", 8, "Business", "DCU");
