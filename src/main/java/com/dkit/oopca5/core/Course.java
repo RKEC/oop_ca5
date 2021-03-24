@@ -16,7 +16,6 @@ public class Course {
     // into a new Course object. Returns the new cloned object.
     // (add here)
 
-
     // Constructor
     public Course(String courseId, String level, String title, String institution) {
         this.courseId = courseId;

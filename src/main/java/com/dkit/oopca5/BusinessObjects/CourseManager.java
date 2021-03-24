@@ -1,7 +1,13 @@
 package com.dkit.oopca5.BusinessObjects;
 
+import com.dkit.oopca5.Exceptions.DaoException;
 import com.dkit.oopca5.core.Colours;
 import com.dkit.oopca5.core.Course;
+import com.dkit.oopca5.core.Student;
+import com.dkit.oopca5.server.CourseDaoInterface;
+import com.dkit.oopca5.server.MySqlCourseDao;
+import com.dkit.oopca5.server.MySqlStudentDao;
+import com.dkit.oopca5.server.StudentDaoInterface;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -29,12 +35,23 @@ public class CourseManager {
     // Store all the Course details.
     // Requires fast access given courseId.
 
-    private HashMap<String, Course> courseMap;
+    private HashMap<String, Course> courseMap = new HashMap<>();
 
     public CourseManager() {
-        // Hardcode some values to get started
-        courseMap = new HashMap<>();
-        // load from text file "courses.dat" and populate coursesMap
+        CourseDaoInterface courseDao = new MySqlCourseDao();
+
+        try {
+            List<Course> courseList = courseDao.findAllCourses();
+
+            for(Course course : courseList) {
+                courseMap.put(course.getCourseId(), course); //[caoNumber->Student]
+            }
+
+            System.out.println("courseMap dump: " + courseMap);
+
+        }catch (DaoException e){
+            e.printStackTrace();
+        }
     }
 
 public Course getCourse(String courseId) {
@@ -66,25 +83,25 @@ public Course getCourse(String courseId) {
         }
     }
 
-    protected void loadPlayersFromFile() {
-        try (Scanner coursesFile = new Scanner(new BufferedReader(new FileReader("Courses.txt")))) {
-            String input;
-            while (coursesFile.hasNextLine()) {
-                input = coursesFile.nextLine();
-                String[] data = input.split(", ");
-                String id = data[0];
-                String lvl = data[1];
-                String name = data[2];
-                String institute = data[3];
-
-                Course readInPlayer = new Course(id, lvl, name, institute);
-                courseMap.put(id, readInPlayer);
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println(Colours.RED + "File not found" + Colours.RESET);
-        }
-    }
+//    protected void loadPlayersFromFile() {
+//        try (Scanner coursesFile = new Scanner(new BufferedReader(new FileReader("Courses.txt")))) {
+//            String input;
+//            while (coursesFile.hasNextLine()) {
+//                input = coursesFile.nextLine();
+//                String[] data = input.split(", ");
+//                String id = data[0];
+//                String lvl = data[1];
+//                String name = data[2];
+//                String institute = data[3];
+//
+//                Course readInPlayer = new Course(id, lvl, name, institute);
+//                courseMap.put(id, readInPlayer);
+//            }
+//
+//        } catch (FileNotFoundException e) {
+//            System.out.println(Colours.RED + "File not found" + Colours.RESET);
+//        }
+//    }
 
     // editCourse(courseId);       // not required for this iteration
 
