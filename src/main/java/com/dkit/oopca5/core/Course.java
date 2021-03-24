@@ -1,4 +1,7 @@
 package com.dkit.oopca5.core;
+
+import java.util.Objects;
+
 /**
  * Notes:
  * Richard collins
@@ -7,7 +10,7 @@ package com.dkit.oopca5.core;
 public class Course {
 
     private String courseId;   // e.g. DK821
-    private String level;      // e.g. 7, 8, 9, 10
+    private int level;      // e.g. 7, 8, 9, 10
     private String title;      // e.g. BSc in Computing in Software Development
     private String institution; // Dundalk Institute of Technology
 
@@ -17,7 +20,7 @@ public class Course {
     // (add here)
 
     // Constructor
-    public Course(String courseId, String level, String title, String institution) {
+    public Course(String courseId, int level, String title, String institution) {
         this.courseId = courseId;
         this.level = level;
         this.title = title;
@@ -39,11 +42,11 @@ public class Course {
         this.courseId = courseId;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -61,6 +64,22 @@ public class Course {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Course)) return false;
+        Course course = (Course) o;
+        return level == course.level &&
+                Objects.equals(courseId, course.courseId) &&
+                Objects.equals(title, course.title) &&
+                Objects.equals(institution, course.institution);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseId, level, title, institution);
     }
 
     @Override

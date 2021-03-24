@@ -34,7 +34,7 @@ public class MySqlCourseDao extends MySqlDao implements CourseDaoInterface {
             while (rs.next())
             {
                 String courseId = rs.getString("courseId");
-                String level = rs.getString("level");
+                int level = rs.getInt("level");
                 String title = rs.getString("title");
                 String institution = rs.getString("institution");
                 Course c = new Course(courseId, level, title, institution);

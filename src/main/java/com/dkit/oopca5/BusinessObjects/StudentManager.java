@@ -47,13 +47,16 @@ public class StudentManager {
 
     public Student getStudent(int caoNumber) {
         Student student = studentMap.get(caoNumber);
-        return new Student(student);
+        Student clone = null;
+        if(student != null){
+            clone = new Student(student);
+        }
+        return clone;
     }
 
     public void addStudent(Student student) {
-        if (student == null)
-            throw new IllegalArgumentException();
-        studentMap.put(student.getCaoNumber(), new Student(student));   //clone the student
+        Integer caoNumber = student.getCaoNumber();
+        studentMap.put(caoNumber, new Student(student));   //clone the student
     }
 
 //    public List<Student> getAllStudents() {

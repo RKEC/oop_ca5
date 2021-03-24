@@ -1,4 +1,7 @@
 package com.dkit.oopca5.core;
+
+import java.util.Objects;
+
 /**
  * Notes:
  * Richard collins
@@ -64,6 +67,22 @@ public class Student {
 //    public void setEmail(String email) {
 //        this.email = email;
 //    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return caoNumber == student.caoNumber &&
+                Objects.equals(dateOfBirth, student.dateOfBirth) &&
+                Objects.equals(password, student.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(caoNumber, dateOfBirth, password);
+    }
 
     @Override
     public String toString() {

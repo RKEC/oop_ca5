@@ -56,14 +56,16 @@ public class CourseManager {
 
 public Course getCourse(String courseId) {
     Course course = courseMap.get(courseId);
-    return new Course(course);
+    Course clone = null;
+    if(course != null){
+        clone = new Course(course);
+    }
+    return clone;
 }
 
     public void addCourse(Course course) {
-        if (course == null)
-            throw new IllegalArgumentException();
-
-        courseMap.put(course.getCourseId(), new Course(course));   //clone the student
+        String courseId = course.getCourseId();
+        courseMap.put(courseId, new Course(course));    //clone the student
     }
 
     public List<Course> getAllCourses() {
