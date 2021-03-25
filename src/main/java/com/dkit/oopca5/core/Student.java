@@ -2,39 +2,28 @@ package com.dkit.oopca5.core;
 
 import java.util.Objects;
 
-/**
- * Notes:
- * Richard collins
- * d00230925
- */
 public class Student {
-    private int caoNumber;  // In the CAO system, cao number is unique identifier for student
+    private int caoNumber;  // In the CAA system, cao number is unique identifier for student
     private String dateOfBirth; // yyyy-mm-dd
     private String password;    // min 8 characters
-//    private String email;
 
     // Copy Constructor
     // Copies the contents of a Student object argument into
     // a new Student object, and returns that new object (a clone)
-    // (add here)
-    public Student(Student otherStudent) {
-        this.caoNumber = otherStudent.caoNumber;
-        this.dateOfBirth = otherStudent.dateOfBirth;
-        this.password = otherStudent.password;
-//        this.email = otherStudent.email;
+    //
+    public Student(Student student) {
+        this.caoNumber = student.caoNumber;
+        this.dateOfBirth = student.dateOfBirth;
+        this.password = student.password;
     }
 
-    // Constructor
-    public Student(int caoNumber, String dateOfBirth, String password) {
+    public Student(int caoNumber, String dateOfBirth, String password ) {
         this.caoNumber = caoNumber;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
-//        this.email = email;
     }
 
-    public boolean verifyLoginCredentials(String dateOfBirth, String password){
-        return dateOfBirth.length() == 10 && password.length() >= 8;
-    }
+    //public boolean verifyLoginCredentials( yyy-mm-dd, password);
 
     public int getCaoNumber() {
         return caoNumber;
@@ -44,11 +33,11 @@ public class Student {
         this.caoNumber = caoNumber;
     }
 
-    public String getDayOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDayOfBirth(String dayOfBirth) {
+    public void setDateOfBirth(String dayOfBirth) {
         this.dateOfBirth = dayOfBirth;
     }
 
@@ -59,7 +48,7 @@ public class Student {
     public void setPassword(String password) {
         this.password = password;
     }
-
+//
 //    public String getEmail() {
 //        return email;
 //    }
@@ -67,7 +56,6 @@ public class Student {
 //    public void setEmail(String email) {
 //        this.email = email;
 //    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -89,7 +77,8 @@ public class Student {
         return "Student{" +
                 "caoNumber=" + caoNumber +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", password='" + password +
+                ", password='" + password + '\'' +
+//                ", email='" + email + '\'' +
                 '}';
     }
 }
