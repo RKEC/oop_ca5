@@ -137,9 +137,9 @@ public class MySqlStudentDao extends MySqlDao implements StudentDaoInterface{
             rs = ps.executeQuery();
             if (rs.next())
             {
-                caoNumber = rs.getInt("CAONUMBER");
-                String dateOfBirth = rs.getString("DATEOFBIRTH");
-                String password = rs.getString("PASSWORD");
+                caoNumber = rs.getInt("caoNumber");
+                String dateOfBirth = rs.getString("dateOfBirth");
+                String password = rs.getString("password");
 
                 s = new Student(caoNumber, dateOfBirth, password);
             }
