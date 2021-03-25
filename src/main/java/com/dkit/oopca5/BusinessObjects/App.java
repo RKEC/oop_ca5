@@ -157,7 +157,7 @@ public class App {
                     case DISPLAY_ALL_COURSES:
                         try{
                             List<Course> list = studentCoursesDaoInterface.getAllCourses();
-                            System.out.println(list);
+                            System.out.println(Colours.GREEN + list + Colours.RESET);
                         }catch (DaoException e){
                             e.printStackTrace();
                         }

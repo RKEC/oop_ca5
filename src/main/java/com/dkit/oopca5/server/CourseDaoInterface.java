@@ -6,6 +6,6 @@ import com.dkit.oopca5.core.Course;
 import java.util.List;
 
 public interface CourseDaoInterface {
-    public List<Course> findAllCourses() throws DaoException;
+    public void getCourse(String courseId) throws DaoException;
 
 }

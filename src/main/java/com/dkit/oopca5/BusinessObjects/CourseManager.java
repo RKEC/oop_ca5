@@ -27,8 +27,7 @@ import java.util.*;
 /**
  * Notes:
  * Richard collins
- * d00230925
- */
+ * d00230925 */
 
 public class CourseManager {
 
