@@ -34,6 +34,9 @@ public class Course {
         this.institution = otherCourse.institution;
     }
 
+    public Course(int caoNumber, String courseId, int order) {
+    }
+
     public String getCourseId() {
         return courseId;
     }

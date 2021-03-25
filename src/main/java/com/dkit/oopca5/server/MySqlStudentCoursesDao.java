@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MySqlStudentCoursesDao extends MySqlDao implements StudentCoursesDaoInterface {
 
@@ -116,8 +118,8 @@ public class MySqlStudentCoursesDao extends MySqlDao implements StudentCoursesDa
                 int level = rs.getInt("level");
                 String title = rs.getString("title");
                 String institution = rs.getString("institution");
-                Course c = new Course(courseId, level, title, institution);
-                courses.add(c);
+                s = new Course(courseId, level, title, institution);
+                courses.add(s);
             }
         } catch (SQLException e)
         {
@@ -145,4 +147,58 @@ public class MySqlStudentCoursesDao extends MySqlDao implements StudentCoursesDa
         }
         return courses;     // may be empty
     }
+
+//    @Override
+//    public Map<Integer, List<Course>> getStudentChoices() throws DaoException {
+//        Connection con = null;
+//        PreparedStatement ps = null;
+//        ResultSet rs = null;
+//        List<Course> courses = new ArrayList<>();
+//        Map<Integer, List<Course>> choices = new HashMap<>();
+//        Course s = null;
+//
+//        try
+//        {
+//            //Get connection object using the methods in the super class (MySqlDao.java)...
+//            con = this.getConnection();
+//
+//            String query = "SELECT * FROM student_courses WHERE caoNumber = ?";
+//            ps = con.prepareStatement(query);
+//
+//            //Using a PreparedStatement to execute SQL...
+//            rs = ps.executeQuery();
+//            while (rs.next())
+//            {
+//                int caoNumber = rs.getInt("caoNumber");
+//                String courseId = rs.getString("courseId");
+//                int order = rs.getInt("order");
+//                s = new Course(caoNumber, courseId, order);
+//                choices.put(s);
+//            }
+//        } catch (SQLException e)
+//        {
+//            throw new DaoException("findAllCourses() " + e.getMessage());
+//        } finally
+//        {
+//            try
+//            {
+//                if (rs != null)
+//                {
+//                    rs.close();
+//                }
+//                if (ps != null)
+//                {
+//                    ps.close();
+//                }
+//                if (con != null)
+//                {
+//                    freeConnection(con);
+//                }
+//            } catch (SQLException e)
+//            {
+//                throw new DaoException("findAllCourses() " + e.getMessage());
+//            }
+//        }
+//        return courses;     // may be empt
+//    }
 }

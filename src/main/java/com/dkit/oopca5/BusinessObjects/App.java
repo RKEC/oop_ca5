@@ -51,7 +51,7 @@ public class App {
                 menuOption = Menu.values()[option];
                 switch (menuOption) {
                     case QUIT_APPLICATION:
-                        loop = false;
+                        System.exit(0);
                         break;
                     case REGISTER:
 
@@ -140,7 +140,7 @@ public class App {
                 courseMenu = CourseMenu.values()[option];
                 switch (courseMenu) {
                     case QUIT:
-
+                        System.exit(0);
                         break;
                     case LOGOUT:
                         loop = false;
@@ -149,7 +149,8 @@ public class App {
                         try {
                             System.out.println(Colours.BLUE + "Enter Course Id: " + Colours.RESET);
                             String course = keyboard.nextLine();
-                            courseDao.getCourse(course);
+                            Course c = courseDao.getCourse(course);
+                            System.out.println(Colours.GREEN + c + Colours.RESET);
                         }catch (DaoException e){
                             e.printStackTrace();
                         }
