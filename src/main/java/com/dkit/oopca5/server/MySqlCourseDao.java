@@ -14,7 +14,7 @@ import java.util.List;
 public class MySqlCourseDao extends MySqlDao implements CourseDaoInterface {
 
     @Override
-    public void getCourse(String courseId) throws DaoException {
+    public void getCourse(String courseId) throws DaoException {    // getCourse should return a Course object ???, add return c at end (Dermot)
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
