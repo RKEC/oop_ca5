@@ -1,5 +1,10 @@
 package com.dkit.oopca5.core;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public enum CourseMenu {
     QUIT,
     LOGOUT,

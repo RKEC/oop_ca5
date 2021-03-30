@@ -6,6 +6,11 @@ import com.dkit.oopca5.core.Course;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * d00230925
+ *Richard Collins
+ */
 public interface StudentCoursesDaoInterface {
     public boolean login(int caoNumber, String dateOfBirth, String password) throws DaoException;
     public List<Course> getAllCourses() throws DaoException;

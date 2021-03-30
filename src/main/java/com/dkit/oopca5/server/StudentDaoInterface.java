@@ -5,6 +5,10 @@ import com.dkit.oopca5.core.Student;
 
 import java.util.List;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
 public interface StudentDaoInterface {
     public List<Student> findAllStudents() throws DaoException;
     public boolean registerStudent(Student s) throws  DaoException;

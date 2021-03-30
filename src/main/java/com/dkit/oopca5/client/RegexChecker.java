@@ -7,6 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class RegexChecker
 {
     public boolean checkRegister(String num, String ptrn){

@@ -9,6 +9,11 @@ import com.dkit.oopca5.server.StudentDaoInterface;
 
 import java.util.*;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class CourseChoicesManager {
 
     // reference to constructor injected studentManager

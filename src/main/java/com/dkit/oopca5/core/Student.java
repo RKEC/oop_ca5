@@ -2,6 +2,11 @@ package com.dkit.oopca5.core;
 
 import java.util.Objects;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class Student {
     private int caoNumber;  // In the CAA system, cao number is unique identifier for student
     private String dateOfBirth; // yyyy-mm-dd

@@ -17,6 +17,10 @@ import com.dkit.oopca5.server.StudentDaoInterface;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
 
 public class StudentManager {
 

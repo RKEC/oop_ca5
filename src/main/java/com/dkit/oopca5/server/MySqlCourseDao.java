@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class MySqlCourseDao extends MySqlDao implements CourseDaoInterface {
 
     @Override

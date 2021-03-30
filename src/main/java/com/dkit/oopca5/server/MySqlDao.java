@@ -17,6 +17,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class MySqlDao
 {
     public Connection getConnection() throws DaoException

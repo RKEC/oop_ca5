@@ -4,6 +4,11 @@ package com.dkit.oopca5.core;
   that are shared between the Client and Server
  */
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class Colours
 {
     public static final String RESET = "\u001B[0m";

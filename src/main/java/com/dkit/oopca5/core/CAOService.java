@@ -3,6 +3,11 @@ package com.dkit.oopca5.core;
 /* The CAOService class has constants to define all of the messages that are sent between the Client and Server
  */
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class CAOService
 {
     public static final int PORT_NUM = 50025;

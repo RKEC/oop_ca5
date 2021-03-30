@@ -14,6 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * d00230925
+ *Richard Collins
+ */
+
 public class MySqlStudentCoursesDao extends MySqlDao implements StudentCoursesDaoInterface {
 
         @Override
