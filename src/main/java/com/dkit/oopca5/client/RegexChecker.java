@@ -14,7 +14,7 @@ import java.util.regex.PatternSyntaxException;
 
 public class RegexChecker
 {
-    public boolean checkRegister(String num, String ptrn){
+    public boolean regexCheck(String num, String ptrn){
         boolean result = false;
         try{
             String s = String.valueOf(num);
