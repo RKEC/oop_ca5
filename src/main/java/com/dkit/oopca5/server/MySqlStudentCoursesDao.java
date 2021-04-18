@@ -3,6 +3,7 @@ package com.dkit.oopca5.server;
 import com.dkit.oopca5.Exceptions.DaoException;
 import com.dkit.oopca5.core.Colours;
 import com.dkit.oopca5.core.Course;
+import com.dkit.oopca5.core.CourseChoices;
 
 
 import java.sql.Connection;
@@ -43,9 +44,6 @@ public class MySqlStudentCoursesDao extends MySqlDao implements StudentCoursesDa
             rs = ps.executeQuery();
             while (rs.next())
             {
-                int num = rs.getInt("caoNumber");
-                String dob = rs.getString("dateOfBirth");
-                String pw = rs.getString("password");
 
                 if(studentDao.findStudent(caoNumber) == null)
                 {
@@ -153,57 +151,127 @@ public class MySqlStudentCoursesDao extends MySqlDao implements StudentCoursesDa
         return courses;     // may be empty
     }
 
-//    @Override
-//    public Map<Integer, List<Course>> getStudentChoices() throws DaoException {
-//        Connection con = null;
-//        PreparedStatement ps = null;
-//        ResultSet rs = null;
-//        List<Course> courses = new ArrayList<>();
-//        Map<Integer, List<Course>> choices = new HashMap<>();
-//        Course s = null;
+    @Override
+     public void registerChoices(List<CourseChoices> choices) throws DaoException
+    {for(CourseChoices c : choices)
+    {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean success = false;
+
+        try
+        {
+
+                //Get connection object using the methods in the super class (MySqlDao.java)...
+                con = this.getConnection();
+
+                String query = "INSERT INTO STUDENT_COURSES VALUES (?,?)";
+                ps = con.prepareStatement(query);
 //
-//        try
-//        {
-//            //Get connection object using the methods in the super class (MySqlDao.java)...
-//            con = this.getConnection();
-//
-//            String query = "SELECT * FROM student_courses WHERE caoNumber = ?";
-//            ps = con.prepareStatement(query);
-//
-//            //Using a PreparedStatement to execute SQL...
-//            rs = ps.executeQuery();
-//            while (rs.next())
-//            {
-//                int caoNumber = rs.getInt("caoNumber");
-//                String courseId = rs.getString("courseId");
-//                int order = rs.getInt("order");
-//                s = new Course(caoNumber, courseId, order);
-//                choices.put(s);
-//            }
-//        } catch (SQLException e)
-//        {
-//            throw new DaoException("findAllCourses() " + e.getMessage());
-//        } finally
-//        {
-//            try
-//            {
-//                if (rs != null)
-//                {
-//                    rs.close();
-//                }
-//                if (ps != null)
-//                {
-//                    ps.close();
-//                }
-//                if (con != null)
-//                {
-//                    freeConnection(con);
-//                }
-//            } catch (SQLException e)
-//            {
-//                throw new DaoException("findAllCourses() " + e.getMessage());
-//            }
-//        }
-//        return courses;     // may be empt
-//    }
+//            System.out.println(c.getCaoNumber());
+//            System.out.println(c.getCourseId());
+//                    ps.setInt(1, c.getCaoNumber());
+//                    ps.setString(2, c.getCourseId());
+
+
+                //Using a PreparedStatement to execute SQL - UPDATE...
+            success = (ps.executeUpdate() == 1);
+
+
+        } catch (SQLException e)
+        {
+            throw new DaoException("insertCourse() " + e.getMessage());
+        } finally
+        {
+            try
+            {
+                if (rs != null)
+                {
+                    rs.close();
+                }
+                if (ps != null)
+                {
+                    ps.close();
+                }
+                if (con != null)
+                {
+                    freeConnection(con);
+                }
+            } catch (SQLException e)
+            {
+                throw new DaoException("insertCourse() " + e.getMessage());
+            }
+        }
+
+    }
+    }
+
+    @Override
+    public List<String> getStudentChoices(int caoNum) throws DaoException {
+        return null;
+    }
+
+    @Override
+    public boolean addChoice(int caoNum,String courseId) throws DaoException
+    {
+        Connection con = null;
+        PreparedStatement prep = null;
+        boolean success = true;
+        try
+        {
+            con = this.getConnection();
+            String query = "INSERT INTO STUDENT_COURSES (caoNumber,courseId) VALUES (?,?)";
+            prep = con.prepareStatement(query);
+            prep.setInt(1,caoNum);
+            prep.setString(2,courseId);
+            prep.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            success = false;
+        }
+        finally
+        {
+            try
+            {
+                if (prep != null)
+                {
+                    prep.close();
+                }
+                if (con != null)
+                {
+                    freeConnection(con);
+                }
+            }
+            catch (SQLException e)
+            {
+                throw new DaoException("updateChoice() "+e.getMessage());
+            }
+        }
+        return  success;
+    }
+
+    @Override
+    public boolean removeChoice(int caoNum, String courseId) throws DaoException
+    {
+        boolean success = true;
+        Connection con = null;
+        PreparedStatement prep = null;
+        ResultSet rs = null;
+        try
+        {
+            con = this.getConnection();
+            String query = "DELETE FROM STUDENT_COURSES WHERE caoNumber = ? AND courseId = ?";
+            prep = con.prepareStatement(query);
+            prep.setInt(1,caoNum);
+            prep.setString(2,courseId);
+            prep.executeUpdate();
+
+        } catch (SQLException e)
+        {
+            success = false;
+        }
+        return success;
+    }
 }

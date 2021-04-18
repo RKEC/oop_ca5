@@ -98,7 +98,7 @@ public class MySqlStudentDao extends MySqlDao implements StudentDaoInterface{
         } catch (SQLException e)
         {
             throw new DaoException("insertStudent() " + e.getMessage());
-        } finally
+        }finally
         {
             try
             {

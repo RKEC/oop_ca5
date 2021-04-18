@@ -1,4 +1,4 @@
-package com.dkit.oopca5.core;
+package com.dkit.oopca5.Constants;
 
 /**
  * d00230925
@@ -11,5 +11,7 @@ public enum CourseMenu {
     DISPLAY_COURSE,
     DISPLAY_ALL_COURSES,
     DISPLAY_CURRENT_CHOICES,
+    ADD_COURSE,
+    REMOVE_COURSE,
     UPDATE_CURRENT_CHOICES;
 }

@@ -1,4 +1,4 @@
-package com.dkit.oopca5.core;
+package com.dkit.oopca5.Constants;
 
 /**
  * d00230925
